@@ -1,9 +1,13 @@
 package com.max.safetyalerts.model;
 
 import lombok.Data;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @Entity
@@ -18,6 +22,7 @@ public class Person {
     private String zip;
     private String phone;
     private String email;
+    private String password;
     private long age;
     @ElementCollection(targetClass = String.class)
     private List<String> medications;
@@ -25,7 +30,12 @@ public class Person {
     private List<String> allergies;
     @ElementCollection(targetClass = String.class)
     private List<String> station;
-
+    @ManyToMany(fetch = FetchType.LAZY)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinTable(	name = "user_roles",
+            joinColumns = @JoinColumn(name = "person_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles = new HashSet<>();
     public Person() {
     }
 
