@@ -10,19 +10,19 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
 public class PersonServiceTest {
-    @Mock
-    PersonService personService;
-
-    Boolean deleted = false;
-
-    @Test
-    public void deletePerson(){
-        Person p = new Person();
-        p.setFirstName("John");
-        p.setLastName("Wayne");
-
-        personService.deletePerson(p);
-        // verif que l'appel au service a été exécutée successfully, test check
-        Mockito.verify(personService, Mockito.times(1)).deletePerson(p);
-    }
+//    @Mock
+//    PersonService personService;
+//
+//    Boolean deleted = false;
+//
+//    @Test
+//    public void deletePerson(){
+//        Person p = new Person();
+//        p.setFirstName("John");
+//        p.setLastName("Wayne");
+//
+//        personService.deletePerson(p);
+//        // verif que l'appel au service a été exécutée successfully, test check
+//        Mockito.verify(personService, Mockito.times(1)).deletePerson(p);
+//    }
 }
