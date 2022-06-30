@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api")
 public class FireStationController {
 
     @Autowired
@@ -29,7 +30,7 @@ public class FireStationController {
     private static final Logger logger = LogManager.getLogger("PersonServiceImpl");
 
 
-    @GetMapping("/firestations")
+    @GetMapping("/listfirestations")
     public Iterable<FireStation> list() {
         return fireStationServiceImpl.listAllFireStations();
     }
@@ -39,7 +40,7 @@ public class FireStationController {
         return fireStationServiceImpl.getFireStationCoverage(stationNumber);
     }
 
-    @GetMapping("/phoneAlert")
+    @GetMapping("/phone")
     public List<PhoneCoverage> listofPhones(@RequestParam(required = false) int stationNumber)  {
         return fireStationServiceImpl.getPhoneNumbersByStation(stationNumber);
     }

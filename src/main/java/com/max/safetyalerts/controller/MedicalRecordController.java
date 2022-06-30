@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/api")
 public class MedicalRecordController {
 
     /**
@@ -26,19 +27,19 @@ public class MedicalRecordController {
     }
 
     //liste de toutes les medical records
-    @GetMapping("/listMedicalRecords")
+    @GetMapping("/listmedicalrecords")
     public Iterable<MedicalRecord> list() {
         return medicalRecordServiceImpl.listAllMedicalRecords();
     }
 
     // add a medical record
-    @PostMapping("/medicalRecord")
+    @PostMapping("/medicalrecord")
     public void addMedicalRecord(@RequestBody MedicalRecord medicalRecordDetails,@RequestParam(required = false) String firstName, @RequestParam(required = false) String lastName) {
         medicalRecordServiceImpl.save(firstName,lastName,medicalRecordDetails);
     }
 
     //delete a medical record
-    @DeleteMapping("/medicalRecord")
+    @DeleteMapping("/medicalrecord")
     public void removeMedicalRecord(@RequestParam(required = false) String firstName, @RequestParam(required = false) String lastName) {
         medicalRecordServiceImpl.deleteMedicalRecord(firstName, lastName);
         logger.info("Remove medical records succeeded");

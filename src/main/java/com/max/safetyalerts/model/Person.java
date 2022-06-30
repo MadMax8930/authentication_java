@@ -68,4 +68,17 @@ public class Person {
         this.address = address;
         this.phone = phone;
     }
+
+    public Person(String firstName, String lastName, String address, String city, String zip, String phone, String email, String encode, long age) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.city = city;
+        this.zip = zip;
+        this.phone = phone;
+        this.email = email;
+        this.password = encode;
+        this.age = age;
+
+    }
 }

@@ -15,6 +15,7 @@ import java.text.ParseException;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api")
 public class PersonController {
 
     @Autowired
@@ -40,19 +41,19 @@ public class PersonController {
     }
 
     //liste de toutes les personnes
-    @GetMapping("/listPersons")
+    @GetMapping("/listpersons")
     public Iterable<Person> list() {
         return personService.listAllPersonns();
     }
 
     // Informations sur une personne
-    @GetMapping("/personInfo")
+    @GetMapping("/person")
     public List<PersonInfoDto> listofPersonByFirstNameAndLastName(@RequestParam(required = false) String firstName, @RequestParam(required = false) String lastName) {
         return personService.getlistPersonsByFirstNameAndLastName(firstName, lastName);
     }
 
     // Liste enfants+autres personnes dans le foyer
-    @GetMapping("/childAlert")
+    @GetMapping("/child")
     public List<Child> listofChilds(@RequestParam(required = false) String address) throws ParseException {
         return personService.getlistOfChildren(address);
     }
@@ -65,7 +66,7 @@ public class PersonController {
     }
 
     // adresses mail de tous les habitants de la ville
-    @GetMapping("/communityEmail")
+    @GetMapping("/community")
     public List<Email> listofEmailByCity(@RequestParam(required = false) String city) {
         return personService.getEmailPerCity(city);
     }
